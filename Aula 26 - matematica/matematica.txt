@@ -1,0 +1,122 @@
+/* 
+Aula 26 - matematica
+autor: Vitor Hugo
+Data: 24;02;2025
+Descriação: Este codigo 
+*/
+
+//******DECARAÇÃO DE VARIÁVEIS GLOBAIS*******
+
+int numeroA = 10;
+int numeroB = 5;
+int resultado = 0;
+float resultadoreal = 0;
+
+void setup()
+{
+  //*******SOMA*******
+	Serial.begin(9600);
+  	resultado = numeroA + numeroB;
+  	Serial.print("Soma do A com o B: ");
+  	Serial.println(resultado);
+  
+  //******SUBTRAÇÃO******
+  	resultado = numeroB - numeroA;
+  	Serial.print("Subtracao do B com o A: ");
+  	Serial.println(resultado);
+  
+  //******MULTIPLICAÇÃO******
+  	resultado = numeroA * numeroB;
+  	Serial.print("Mutiplicacao do A com o B: ");
+  	Serial.println(resultado);
+  
+  //******DIVISÃO*******
+  	resultado = numeroA / numeroB;
+  	Serial.print("Divisao do A com o B: ");
+  	Serial.println(resultado);
+  	resultado = numeroA % numeroB;
+  	Serial.print("E sobra: ");
+  	Serial.println(resultado);
+  	resultadoreal = (float)numeroA / (float)numeroB;
+  	Serial.print("Ou: ");
+    Serial.println(resultadoreal, 1); //Limitar a casa decimal
+  
+  //*******POTENCIAÇÃO*******
+  	resultado = pow(numeroA,numeroB); //'A' elevado a 'b'
+    Serial.print(" A elevado a B: ");
+  	Serial.println(resultado);
+  
+  //****************QUADRADO*********
+  resultado = sq(numeroA);  //numero elevado ao quadrado
+  Serial.print("O quadrado de A: ");
+  Serial.println(resultado);
+  
+  //*******RAIZ QUADRADA******
+  resultadoreal = sqrt((float)numeroA);  //raiz quadrada do numero
+  Serial.print("Raiz quadrada de A: ");
+  Serial.println(resultadoreal);
+  
+  //********MODULO (NUMERO ABSOLUTO)******
+	resultado = abs(numeroA * -1);
+	Serial.println(resultado);
+  
+  //*******RESTRIÇÃO******
+  	resultado = constrain(numeroA, -3, 5); //Restringe aos limites de -3 e 5
+	Serial.println(resultado);
+  
+  //*******REMAPEAMENTO*******
+  	resultadoreal = map(numeroA, 0, 20, 0, 10); 
+	//map(valor, deMenor, deMaior, deMenor, deMaior)
+  	Serial.println(resultadoreal);
+  
+  //******OPERADORES DE ATRIBUIÇÃO*******
+  	//numeroA = numeroA + 5;
+  	numeroA += 5;
+  	Serial.println(numeroA);
+  	
+  	//numeroA = numeroA - 5;
+  	Serial.println(numeroA -= 5);
+  
+  	Serial.println (numeroA *= 2);
+  	Serial.println (numeroA /= 2); 
+  
+  	//*******INCREMENTAR A VARIAVEL*******
+  	//numeroA = numeroA + 1
+  	Serial.println(numeroA++); //pos incremento
+  	Serial.println(++numeroA); //pre incremento
+  
+  	//*******DECREMENTAR A VARIAVEL*******
+  	// numeroA = numeroA - 1
+    Serial.println(numeroA--); //pos decremento
+  	Serial.println(--numeroA); //pre decremento
+  
+  	resultadoreal = ((2.0 / 5) + (2 * 3));
+  	Serial.println(resultadoreal);  
+  
+  	//*********EXERCICIO*********
+  
+float resultadoInicial = 0;
+float resultado = 0;
+float numeroA = 80;
+float paraMaior = 100;
+float paraMenor = 50;
+float deMaior = 500;
+float deMenor = 50;
+
+  resultadoInicial = (numeroA - deMenor) * ((paraMaior - paraMenor)/(deMaior - deMenor));
+  resultado = paraMenor + resultadoInicial;
+  Serial.println(resultado);
+  
+  // Remapeamento
+  resultado = map (numeroA, deMenor, deMaior, paraMenor, paraMaior);
+  //map (valor, deMenor, deMaior, paraMenor, paraMaior)
+  Serial.println(resultado);
+
+}
+
+
+
+void loop()
+{
+
+}
