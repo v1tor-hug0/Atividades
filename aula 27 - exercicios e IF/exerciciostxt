@@ -1,0 +1,105 @@
+float altura = 1.65;
+float peso = 75;
+float imc = 0;
+int bateria = 70;
+#define led2 5
+
+void setup()
+{
+  Serial.begin(9600);
+  imc = peso / (altura * altura);
+  Serial.print("Seu IMC eh: ");
+  Serial.println(imc);
+  
+  if (imc > 40) 
+  {
+  	Serial.println("Obesidade classe III");
+  }
+  else if ( imc >= 35 && imc <= 39.9)
+  {
+    Serial.println("Obesidade classe II");
+  }
+  else if (imc >= 30 && imc <= 34.9) 
+  {
+  	Serial.println("Obesidade classe I");
+  }
+  else if ( imc >= 25 && imc <= 29.9)
+  {
+    Serial.println("Exesso de peso");
+  }
+  else if (imc >= 18.5 && imc <= 24.9) 
+  {
+  	Serial.println("Peso normal");
+  }
+  else
+  {
+    Serial.println("Abaixo do peso");
+  }
+  
+  
+    
+  }
+  
+  int temperatura = 35;
+  #define led 3
+  
+  if (temperatura > 30) {
+  	digitalWrite(led, HIGH);
+  }
+  
+  
+	
+  int valor = 1023;
+  int resultado;
+  #define led3 7
+  
+  resultado = map(valor, 0, 1023, 0, 100);
+  
+  if(constrain(resultado, 20, 80)) {
+  	digitalWrite(led3, HIGH);
+    Serial.print("O valor ");
+    Serial.print(valor);
+    Serial.print(" excedeu os limites, valor reajustado para ");
+    Serial.println(resultado);
+  
+  }
+
+
+
+
+
+
+
+  
+  
+  int numero = 4;
+  #define led4 9
+  int resultado2;
+  
+  resultado2 = numero % 2;
+  
+  if (resultado2 == 0)
+    digitalWrite(led4, HIGH);
+
+
+  	
+
+
+
+
+
+}
+
+void loop()
+{
+  if (bateria <= 80 && bateria >=20) {
+  
+    digitalWrite(led2, HIGH);
+    delay(500);
+    digitalWrite(led2, LOW);
+	delay(500);
+    Serial.println("Alerta");
+  }
+  
+  
+}
