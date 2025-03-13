@@ -1,0 +1,202 @@
+float altura = 1.65;
+float peso = 75;
+float imc = 0;
+int bateria = 70;
+#define led2 5
+#define led 3
+#define led3 7
+#define led4 9
+
+void setup()
+{
+  Serial.begin(9600);
+  
+  // IMC **************
+  imc = peso / (altura * altura);
+  Serial.print("Seu IMC eh: ");
+  Serial.println(imc);
+  
+  if (imc > 40) 
+  {
+  	Serial.println("Obesidade classe III");
+  }
+  else if ( imc >= 35 && imc <= 39.9)
+  {
+    Serial.println("Obesidade classe II");
+  }
+  else if (imc >= 30 && imc <= 34.9) 
+  {
+  	Serial.println("Obesidade classe I");
+  }
+  else if ( imc >= 25 && imc <= 29.9)
+  {
+    Serial.println("Exesso de peso");
+  }
+  else if (imc >= 18.5 && imc <= 24.9) 
+  {
+  	Serial.println("Peso normal");
+  }
+  else
+  {
+    Serial.println("Abaixo do peso");
+  }
+  
+  
+    
+  // Exercicio 1 *****************************
+  
+  int temperatura = 35;
+  
+  
+  if (temperatura > 30) {
+  	digitalWrite(led, HIGH);
+  }
+  
+  
+  
+  
+  //EXERCICIO 3 **********************************
+	
+  int valor = 1023;
+  int valormap = 0;
+  
+  
+  valormap = map(valor, 0, 1023, 0, 100);
+
+	int valorconstrain = constrain(valormap, 20, 80);
+  
+  	digitalWrite(led3, HIGH);
+    Serial.print("\n O valor ");
+    Serial.print(valor);
+    Serial.print(" excedeu os limites, valor reajustado para ");
+    Serial.println(valorconstrain);
+  
+  
+  
+  //EXERCICIO 4 ***************************************
+  
+  int numero = 4;
+  
+  int resultado2;
+  
+  resultado2 = numero % 2;
+  
+if (resultado2 == 0){
+    digitalWrite(led4, HIGH);
+}
+
+  
+  
+  
+  
+  // exercicio 5 **************
+  
+  int number = 1;
+  
+  if (number > 0 ){
+  	Serial.println("\n O numero eh positivo");
+  } else {
+  	Serial.println("\n O numero eh negativo");
+  }
+  
+  
+  
+  
+  
+  // exercicio 6 *******
+  
+  String nome = "Roberto";
+  String cargo = "Assistente";
+  float salario = 999.99;
+
+  
+  if (salario < 1000.00) {
+  	salario = salario * 1.1;
+  }
+  
+  Serial.println(nome);
+  Serial.println(cargo);
+  Serial.println(salario);
+  
+  
+  
+  
+  
+  // exercicio 7******************
+  
+  
+  float salario2 = 499.99;
+  
+  if (salario2 < 500.00) {
+  	salario2 = salario2 * 1.3;
+    Serial.print("\n Salario reajustado para: ");
+    Serial.println(salario2);
+    
+  } else {
+  	Serial.println ("\n Nao qualificado para receber o aumento");
+    
+  }
+  
+  
+  
+  
+  //EXERCICIO 8 ***********************************************
+  
+  int num1 = 1;
+  int num2 = 2;
+  
+  if (num1 > num2) {
+  	Serial.print("\n O Maior numero eh: ");  Serial.println(num1);
+    
+  } else if(num2 > num1) {
+  	Serial.print("\n O maior numero eh: "); Serial.println(num2);
+    
+  } else {
+  	Serial.println("\n Os numeros sao iguais");
+    
+  }
+  
+  
+  
+  
+  //EXERCICIO 9 ************************************************
+  
+  float nota1 = 5.0;
+  float nota2 = 5.0;
+  float nota3 = 5.0;
+  float nota4 = 5.0;
+  float media = (nota1 + nota2 + nota3 + nota4) / 4;
+  
+  Serial.print("\n Sua media eh: "); Serial.println(media);
+  
+  if (media >= 7.0) {
+  	Serial.println("\n Aprovado");
+    
+  } else if (media < 7.00 && media >= 5.00) {
+  	Serial.println("\n Recuperacao");
+    
+  } else {
+  	Serial.println("\n Reprovado");
+  
+  }
+  
+    
+}
+
+void loop()
+{
+  
+  //EXERCICIO 2 **************************
+  
+  if (bateria <= 80 && bateria >=20) {
+  
+    digitalWrite(led2, HIGH);
+    delay(500);
+    digitalWrite(led2, LOW);
+	delay(500);
+    Serial.println("\n Alerta");
+    delay(5000);
+  }
+  
+  
+}

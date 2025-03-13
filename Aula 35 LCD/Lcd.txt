@@ -1,0 +1,116 @@
+#include <LiquidCrystal_I2C.h>
+
+LiquidCrystal_I2C lcd(0x27, 16, 2); // Hexadecimal, linhas, colunas 
+
+const char botao1 = 8;
+const char botao2 = 7;
+const char botao3 = 12;
+const char ledVerm = 13;
+const char ledVerm2 = 6;
+const char ledVerm3 = 11;
+bool estadoLed = 0;
+bool estadoLed2 = 0;
+bool estadoLed3 = 0;
+
+
+
+void setup() {
+pinMode(ledVerm, OUTPUT);
+pinMode(ledVerm2, OUTPUT);
+pinMode(ledVerm3, OUTPUT);
+pinMode(botao1, INPUT);
+pinMode(botao2, INPUT);
+pinMode(botao3, INPUT);
+  
+Serial.begin(9600);
+  
+lcd.init(); //Iniciar o lcd
+lcd.backlight();
+lcd.setCursor(0,0); //lcd.home();
+lcd.print(" Leds ligados :");
+  
+}
+
+void loop() {
+
+	static bool statusAntes = HIGH;
+	bool statusBotao = digitalRead(botao1);
+   // Serial.println(statusBotao);
+  
+   if (statusAntes == 1 && statusBotao == 0 ) {
+       estadoLed = !estadoLed;
+      digitalWrite(ledVerm, estadoLed);
+
+
+     }
+  statusAntes = statusBotao;
+  
+  if (statusAntes == 0 && statusBotao == 1 ) {
+      estadoLed = !estadoLed;
+      digitalWrite(ledVerm, estadoLed);
+
+     }
+  
+    statusAntes = statusBotao;
+  
+  
+  
+  static bool statusAntes2 = HIGH;
+	bool statusBotao2 = digitalRead(botao2);
+   // Serial.println(statusBotao2);
+  
+   if (statusAntes2 == 1 && statusBotao2 == 0 ) {
+       estadoLed2 = !estadoLed2;
+      digitalWrite(ledVerm2, estadoLed2);
+
+
+     }
+  statusAntes2 = statusBotao2;
+  
+  if (statusAntes2 == 0 && statusBotao2 == 1 ) {
+      estadoLed2 = !estadoLed2;
+      digitalWrite(ledVerm2, estadoLed2);
+
+     }
+  
+    statusAntes2 = statusBotao2;
+  
+  
+  
+  	static bool statusAntes3 = HIGH;
+	bool statusBotao3 = digitalRead(botao3);
+  
+  
+     if (statusAntes3 == 1 && statusBotao3 == 0 ) {
+       estadoLed3 = !estadoLed3;
+      digitalWrite(ledVerm3, estadoLed3);
+
+
+     }
+  statusAntes3 = statusBotao3;
+  
+  if (statusAntes3 == 0 && statusBotao3 == 1 ) {
+      estadoLed3 = !estadoLed3;
+      digitalWrite(ledVerm3, estadoLed3);
+
+     }
+  
+    statusAntes3 = statusBotao3;
+  
+
+  
+  lcd.setCursor(0,1);
+
+    if (estadoLed) lcd.print("1 ");
+    else lcd.print("  ");
+  lcd.setCursor(2,1);
+
+    if (estadoLed2) lcd.print(" 2 ");
+     else lcd.print("     ");
+  lcd.setCursor(4,1);
+    if (estadoLed3) lcd.print("  3 ");
+	 else lcd.print("      ");
+
+    
+
+}

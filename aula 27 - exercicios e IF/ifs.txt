@@ -1,0 +1,67 @@
+/*************OPERADORES DE CONDIÇÃO**********
+== verifica se é igual
+< verifica se é menor que
+> verifica se é maior que
+<= verifica se é menor ou igual 
+>= verifica se é maior ou igual */
+
+int temperatura = 25;
+
+void setup()
+{
+  Serial.begin(9600);
+	if ( temperatura > 30)
+    {
+      Serial.println("Dois sois para cada um");
+    }
+    	
+      	else if (temperatura > 24 & temperatura < 30)
+    	{
+      		Serial.println("Partiu praia");
+    	} 
+     			else if (temperatura > 18 & temperatura <= 24)
+    			{ 
+      				Serial.println("Gostosinho");
+    			}
+      					else if (temperatura > 6 & temperatura <= 18)
+     					 {
+        					Serial.println("Falta");
+                         }
+        						else 
+        						{
+        							Serial.println("Frio pra caramba");
+                                
+                                }
+  
+  
+  bool portaaberta = true;
+ 
+  // if (portaaberta) {}  == if (portaaberta == true) {}
+  if (portaaberta == true) {
+  	Serial.println("nao faca nada");
+    
+  } else {
+  	Serial.println("Ligar ar condicionado");
+  }
+    
+  
+  //if (!portaaberta) {} == if (portaaberta == false) {}
+  if (!portaaberta) {
+  	Serial.println("Ligar ar condicionado");
+  }
+  
+  
+  
+  int umidade = 65;
+  
+  if (temperatura < 12 || umidade > 70) {
+  	Serial.println("Alerta");
+    
+  }
+  
+ }
+
+
+void loop ()
+{
+}

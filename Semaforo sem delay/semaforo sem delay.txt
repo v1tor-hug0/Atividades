@@ -1,0 +1,57 @@
+#define ledverde 2
+#define ledamar 3
+#define ledver 4
+
+unsigned long tempo;
+unsigned long tempoInicial = 0;
+char faseSemaforo = 0;
+const int verdeligado = 3000;
+const int amarligado = 2000;
+const int verligado = 5000;
+ 
+
+void setup() {
+    Serial.begin(9600);
+    pinMode(ledverde, OUTPUT);
+    pinMode(ledamar, OUTPUT);
+    pinMode(ledver, OUTPUT);
+}
+
+void loop() {
+    tempo = millis();
+  
+  if (faseSemaforo == 0) {
+    if ((tempo - tempoInicial) >= verdeligado) {
+       
+        digitalWrite(ledverde, HIGH);
+      	digitalWrite(ledamar, LOW);
+      	digitalWrite(ledver, LOW);
+      	tempoInicial = tempo;
+      	faseSemaforo = 1;
+    } }
+
+   
+  else if (faseSemaforo ==1) {
+ 	 if ((tempo - tempoInicial) >= amarligado ) {
+        
+      digitalWrite(ledverde, LOW);
+      digitalWrite(ledamar, HIGH);
+       tempoInicial = tempo;
+       faseSemaforo = faseSemaforo = 2;
+    }
+  }
+
+    
+  else if (faseSemaforo == 2) {
+  	if ((tempo - tempoInicial) >= verligado) {
+       
+      digitalWrite(ledamar, LOW);
+      digitalWrite(ledver, HIGH);
+        tempoInicial = tempo; 
+    	faseSemaforo = 0;
+  }
+    }
+
+    
+
+}
